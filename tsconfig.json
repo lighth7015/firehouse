@@ -1,0 +1,38 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"lib": [ "dom", "dom.iterable", "esnext" ],
+
+		"jsx": "react",
+		"jsxFactory": "h",
+
+		"removeComments": false,
+
+		"noEmit": true,
+		"strict": true,
+
+		"allowJs": true,
+		"sourceMap": true,
+		"declaration": true,
+
+		"skipLibCheck": true,
+		"inlineSources": true,
+		"importHelpers": true,
+
+		"isolatedModules": true,
+		"inlineSourceMap": true,
+		"esModuleInterop": true,
+
+		"resolveJsonModule": true,
+		"downlevelIteration": true,
+		"emitDecoratorMetadata": true,
+
+		"experimentalDecorators": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+
+		"module": "esnext",
+		"moduleResolution": "node",
+	},
+	"include": [ "src" ]
+}
