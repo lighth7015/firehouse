@@ -4,7 +4,7 @@ export const drawerWidth: number = 248;
 export const appBarHeight: number  = 50;
 export const scaleFactor: number = 1.05;
 
-export default makeStyles((theme: Theme) => createStyles({
+export const useAppStyles = makeStyles((theme: Theme) => createStyles({
 	root: {
 		display: 'flex',
 		overflowY: 'inherit',
@@ -87,7 +87,7 @@ export default makeStyles((theme: Theme) => createStyles({
 	}
 }));
 
-export const DrawerStyles =
+export const useDrawerStyles =
 	makeStyles((theme: Theme) => createStyles({
 		drawer: {
 			width: drawerWidth,

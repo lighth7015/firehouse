@@ -7,7 +7,7 @@ import Container from '@material-ui/core/Container';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import Typography from '@material-ui/core/Typography';
-import useStyles, { DrawerStyles } from './styles';
+import { useAppStyles, useDrawerStyles } from './styles';
 import Drawer from "./drawer";
 
 interface ListItem { name: string; value: string; }
@@ -15,9 +15,6 @@ interface ColumnDetail { caption: string; entries?: Array<ListItem>; }
 
 export default
 class Application extends React.Component {
-	private classes = useStyles();
-	private drawer = DrawerStyles();
-
 	private state: object = {
 		shouldCollapse: false,
 		isNavbarOpened: false
@@ -54,28 +51,31 @@ class Application extends React.Component {
 	}
 
 	render() {
+		const classes = useAppStyles();
+		const drawerClasses = useAppStyles(); // doesn't seem to be used here
+
 		return (
-			<div className={this.classes.root}>
-				<AppBar color="primary" position="absolute" elevation={2} className={this.classes.mainAppBar.shell}>
+			<div className={classes.root}>
+				<AppBar color="primary" position="absolute" elevation={2} className={classes.mainAppBar.shell}>
 					<Toolbar variant="dense">
-						<Typography variant="h5" className={this.classes.appHeading} noWrap>
+						<Typography variant="h5" className={classes.appHeading} noWrap>
 						Hello, world!
 						</Typography>
 					</Toolbar>
 				</AppBar>
-				<AppBar elevation={0} color="secondary" position="fixed" className={this.classes.appBar}>
-					<Toolbar classes={{ root: this.classes.gridList }}>
-						<GridList className={this.classes.gridList} cellHeight={40} cols={this.columns.length}>{
+				<AppBar elevation={0} color="secondary" position="fixed" className={classes.appBar}>
+					<Toolbar classes={{ root: classes.gridList }}>
+						<GridList className={classes.gridList} cellHeight={40} cols={this.columns.length}>{
 							this.columns.map((column: ColumnDetail) => <GridListTile>{column.entries?
-									<GridListTileBar title={column.caption} subtitle={<span>Test</span>} classes={{ root: this.classes.gridItems }} />:
-									<GridListTileBar title={<Typography variant="h6">{column.caption}</Typography>} classes={{ root: this.classes.gridItems }} />
+									<GridListTileBar title={column.caption} subtitle={<span>Test</span>} classes={{ root: classes.gridItems }} />:
+									<GridListTileBar title={<Typography variant="h6">{column.caption}</Typography>} classes={{ root: classes.gridItems }} />
 								}</GridListTile>)
 						}</GridList>
 					</Toolbar>
 				</AppBar>
 				<Drawer />
-				<main className={this.classes.main}>
-					<Container className={this.classes.content} maxWidth="xl">
+				<main className={classes.main}>
+					<Container className={classes.content} maxWidth="xl">
 						<Typography align="justify" paragraph>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit,  sed do eiusmod  tempor incididunt ut
 							labore et dolore magna aliqua.  Rhoncus dolor  purus non enim praesent elementum facilisis leo
