@@ -18,46 +18,43 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import { DrawerStyles } from '../styles';
+import { useDrawerStyles } from '../styles';
 
-export default
-class NavDrawer extends React.Component {
-	private classes = DrawerStyles();
-
-	render({ open, shouldCollapse = false }) {
-		return (
-			<Drawer className={this.classes.drawer}
-					variant="permanent"
-					classes={{
-						paper: this.classes.paper
-					}}>
-				<Toolbar component="header" color="primary" variant="dense">
-					<Typography variant="h6" noWrap>
-						Clipped drawer
-					</Typography>
-				</Toolbar>
-				<main className={this.classes.drawerContainer}>
-					<List>{
-						["Inbox", "Starred", "Send email", "Drafts"].map((text, index) =>
-						(<ListItem button key={text}>
-							<ListItemIcon>
-								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-							</ListItemIcon>
-							<ListItemText primary={text} />
-						</ListItem>))
-					}</List>
-					<Divider />
-					<List>
-						{["All mail", "Trash", "Spam"].map((text, index) => (
-						<ListItem button key={text}>
-							<ListItemIcon>
+export default function NavDrawer({ open, shouldCollapse = false }) {
+	const classes = useDrawerStyles();
+	return (
+		<Drawer className={classes.drawer}
+				variant="permanent"
+				classes={{
+					paper: classes.paper
+				}}>
+			<Toolbar component="header" color="primary" variant="dense">
+				<Typography variant="h6" noWrap>
+					Clipped drawer
+				</Typography>
+			</Toolbar>
+			<main className={classes.drawerContainer}>
+				<List>{
+					["Inbox", "Starred", "Send email", "Drafts"].map((text, index) =>
+					(<ListItem button key={text}>
+						<ListItemIcon>
 							{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-							</ListItemIcon>
-							<ListItemText primary={text} />
-						</ListItem>
-						))}
-					</List>
-				</main>
-			</Drawer>);
-	}
+						</ListItemIcon>
+						<ListItemText primary={text} />
+					</ListItem>))
+				}</List>
+				<Divider />
+				<List>
+					{["All mail", "Trash", "Spam"].map((text, index) => (
+					<ListItem button key={text}>
+						<ListItemIcon>
+						{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+						</ListItemIcon>
+						<ListItemText primary={text} />
+					</ListItem>
+					))}
+				</List>
+			</main>
+		</Drawer>
+	);
 }
