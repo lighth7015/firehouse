@@ -1,23 +1,23 @@
-import { model } from 'parket';
+import { model } from "parket";
 
-export
-const Model = model('Application', {
+export const Model = model("Application", {
 	initial: () => ({
 		application: {
-			shellTitle: 'My Application',
+			shellTitle: "My Application",
 			drawerOpen: true
-		},
+		}
 	}),
 
 	actions: state => ({
 		ToggleOpen() {
 			state.application.drawerOpen = !state.application.drawerOpen;
-		},
+		}
 	}),
 
+	/* eslint-disable */
 	views: ({ application, eventLog }) => ({
 		caption: () => application.shellTitle,
-		appDrawer: () => application.drawerOpen,
+		appDrawer: () => application.drawerOpen
 	})
 });
 

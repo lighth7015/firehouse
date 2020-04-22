@@ -24,10 +24,11 @@ module.exports = {
             pragma: "h",
             version: "detect"
         },
+        "indent": [2, "tab"],
     },
     overrides: [
         {
-            files: ["*.js"],
+            files: ["*.ts","*.tsx"],
             rules: {
                 "@typescript-eslint/explicit-function-return-type": "off",
             }
