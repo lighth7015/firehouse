@@ -159,7 +159,7 @@ export default class AppDrawer extends React.Component {
 								)) ||
 								(index === 0 && current.length > 1 && (
 									<ListItem
-										button={menu.type === MenuTypes.MenuItem}
+										button={menu.type !== MenuTypes.Divider}
 										onClick={event => this.activate(event, menu, index)}
 										key={index}
 									>
@@ -172,7 +172,7 @@ export default class AppDrawer extends React.Component {
 									</ListItem>
 								)) || (
 									<ListItem
-										button={menu.type === MenuTypes.MenuItem}
+										button={menu.type !== MenuTypes.Divider}
 										onClick={event => this.activate(event, menu, index)}
 										key={index}
 										divider={menu.type === MenuTypes.Divider}
